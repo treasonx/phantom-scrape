@@ -33,7 +33,8 @@ function loadWeatherFile(cb) {
         '--disk-cache=yes',
         '--load-images=no', 
         '--load-plugins=no',
-        'hourly.js'
+        'hourly.js', 
+        config.accuweatherUrl
       ], 
       onExit = function(code) {
         if(code === 0) {
