@@ -1,0 +1,12 @@
+{
+  "phantomjs": "path/to/phantomjs", 
+  "to": [
+    "me@example.com"
+  ],
+  "from": "you@example.com",
+  "username": "smtp@example.com",
+  "password": "smtppassword",
+  "host": "smtp.example.com"
+  
+}
+
