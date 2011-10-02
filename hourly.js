@@ -1,5 +1,5 @@
 var page = require('webpage').create(),
-    url = 'http://www.accuweather.com/us/ma/cambridge/02138/forecast-hourly.asp?fday=2&hbhhour=',
+    url,
     hour = 0,
     scrapeResult = {errors:[], results:[]},
     clientFn = function () {
@@ -94,5 +94,14 @@ function getPage(hourIdx) {
   }
 }
 
-getPage(hour);
+(function() {
+  
+  if(phantom.args.length < 1) { 
+    console.log('missing url argument!');
+    phantom.exit(1);
+  } else { 
+    url = phantom.args[0];
+    getPage(hour);
+  }
 
+}());
