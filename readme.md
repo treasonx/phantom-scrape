@@ -37,7 +37,8 @@ Email.js will capture the results of the hourly.js file and format the output pr
 #Hourly.js Script
 
 This script is a PhantomJS script. It will load the accuweather page and then scrape the hour by hour forcast for a 24 hour period. There is some error checking in this script to make sure the structure of the page has not changed since we assume some element are present! The structure returned has an errors list and a results list. The errors list will contain a list of strings of errors that might have been encountered while we tried to scrape the page. The results list will contain
-forecast objects. See the example of the structures below. 
+forecast objects. See the example of the structures below. If you would like to run the script standalone you can use phantomjs hourly.js "http://www.accuweather.com/us/ma/cambridge/02138/forecast-hourly.asp?fday=2&hbhhour="
+ 
 
 ###Structure returned from hourly.js script
 
