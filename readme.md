@@ -4,7 +4,7 @@ To get started you need to have PhantomJS on your system. You can download the l
 
 #Config File Setup
 
-The config file makes it easy to configure the script for your needs. Here is an explaination of the fields in the config file. The config script must be passed as an argument to the email.js script. For example email.js sampleconfig.json 
+The config file makes it easy to configure the script for your needs. Here is an explaination of the fields in the config file. The config script must be passed as an argument to the email.js script. For example node email.js sampleconfig.json 
 
     {
       //Location of the phantomjs executable on your system
@@ -39,7 +39,7 @@ Email.js will capture the results of the hourly.js file and format the output pr
 This script is a PhantomJS script. It will load the accuweather page and then scrape the hour by hour forcast for a 24 hour period. There is some error checking in this script to make sure the structure of the page has not changed since we assume some element are present! The structure returned has an errors list and a results list. The errors list will contain a list of strings of errors that might have been encountered while we tried to scrape the page. The results list will contain
 forecast objects. See the example of the structures below. 
 
-###Structure returned from hourly.js scripte
+###Structure returned from hourly.js script
 
     {
       //Errors encountered while scraping. Normally 0
