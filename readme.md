@@ -25,7 +25,7 @@ The config file makes it easy to configure the script for your needs. Here is an
       "accuweatherUrl": "http://www.accuweather.com/us/ma/cambridge/02138/forecast-hourly.asp?fday=2&hbhhour="
     }
 
-## Accuweather URL setting
+### Accuweather URL setting
 If you look at the accuweather url above you will notice the query args of the url. fday seems to be which day you should be querying for. fday of 1 is today, fday of 2 is tomorrow ect. hbhhour is the paging of the hour by hour table. The table pages in 8 hour increments. hbhhour will be incremented by the hourly.js script until it reaches 24 hours. At this time you cannot specify the hbhhour value in the config file.  
 
 #Email.js Script
@@ -34,4 +34,53 @@ This script is the driver script for the parser (hourly.js). Since within a phan
 
 Email.js will capture the results of the hourly.js file and format the output properly for email. Then using https://github.com/weaver/node-mail we send them email using our SMTP server of choice. 
 
+#Hourly.js Script
+
+This script is a PhantomJS script. It will load the accuweather page and then scrape the hour by hour forcast for a 24 hour period. There is some error checking in this script to make sure the structure of the page has not changed since we assume some element are present! The structure returned has an errors list and a results list. The errors list will contain a list of strings of errors that might have been encountered while we tried to scrape the page. The results list will contain
+forecast objects. See the example of the structures below. 
+
+###Structure returned from hourly.js scripte
+
+    {
+      //Errors encountered while scraping. Normally 0
+      "errors": [
+        "Error one",
+        "Error two",
+        ...
+      ],
+      //Hourly Forcast structures from the scrape. 
+      "results": [
+        {
+          "conditions": "Mostly Cloudy",
+          "realfeel": "53°",
+          "temp": "51°",
+          "time": [
+            "12am"
+          ]
+        },
+        {
+          "conditions": "Showers",
+          "realfeel": "53°",
+          "temp": "51°",
+          "time": [
+            "1am"
+          ]
+        },
+        {
+          "conditions": "Cloudy",
+          "realfeel": "53°",
+          "temp": "51°",
+          "time": [
+            "2am"
+          ]
+        },
+        ...
+         ],
+      //Forcast Day
+      "day": "2011-10-03T13:37:38.999Z"
+    }
+
+#Usage
+
+You can run the script manually at the command prompt with the following command node email.js sampleconf.json Make sure you have NodeJS installed. This can be setup as a cron job on a *nix system or if you are on a mac you can set it up as a launchd process (example coming soon) 
 
