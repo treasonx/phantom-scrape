@@ -6,7 +6,8 @@
   "from": "you@example.com",
   "username": "smtp@example.com",
   "password": "smtppassword",
-  "host": "smtp.example.com"
+  "host": "smtp.example.com",
+  "accuweatherUrl": "http://www.accuweather.com/us/ma/cambridge/02138/forecast-hourly.asp?fday=2&hbhhour="
   
 }
 
